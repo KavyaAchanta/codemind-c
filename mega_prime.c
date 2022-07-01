@@ -1,40 +1,47 @@
 #include<stdio.h>
-#include<math.h>
 int main()
 {
-    int n,count=0,r,k,temp,i;
+    int n,c=0,dc=0,m=0,i,d,s;
     scanf("%d",&n);
-    for(k=2;k<sqrt(n);k++)
+    for(i=1;i<=n;i++)
     {
-        if(n%k==0)
+        if(n%i==0)
         {
-            count=count+1;
-            break;
+            c++;
         }
     }
-    if(count!=0)
+    if(c==2)
     {
-        printf("Not Mega Prime");
+        while(n!=0)
+        {
+            d=n%10;
+            n=n/10;
+            dc++;
+            s=0;
+            for(i=1;i<=d;i++)
+            {
+                if(d%i==0)
+                {
+                    s++;
+                }
+            }
+            if(s==2)
+            {
+                m++;
+            }
+        }
+        if(m==dc)
+        {
+            printf("Mega Prime");
+        }
+        else
+        {
+            printf("Not Mega Prime");
+        }
     }
     else
     {
-        temp=n;
-      while(temp>0)
-      {
-        r=temp%10;
-        if(r==2||r==3||r==5||r==7)
-         r=r;
-        else
-        {
-         printf("Not Mega Prime");
-         i=1;
-         break;
-        }
-        temp=temp/10;
-     }
-     if(i!=1)
-      {
-        printf("Mega Prime");
-      }
-    } 
-}    
+        printf("Not Mega Prime");
+    }
+}
+
